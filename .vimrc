@@ -14,9 +14,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'junegunn/fzf'
 Plugin 'jiangmiao/auto-pairs'
-
 Plugin 'ternjs/tern_for_vim'
-" if you use Vundle, load plugins:
+
+" Completion/Snippets
 Plugin 'ervandew/supertab'
 Plugin 'Valloric/YouCompleteMe'
 "Plugin 'garbas/vim-snipmate'
@@ -24,6 +24,8 @@ Plugin 'SirVer/ultisnips'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 
+Plugin 'jshint/jshint'
+Plugin 'othree/es.next.syntax.vim'
 Plugin 'othree/html5.vim'
 " Optional
 Plugin 'honza/vim-snippets'
@@ -41,22 +43,31 @@ set relativenumber
 set t_Co=256
 set background=dark
 colorscheme wombat256mod
-
+"
 " Easier split navigations for vim splits
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
+
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap j gj
 nnoremap k gk
+nnoremap <Space>w :w<CR>
+nnoremap Q :q<CR>
+nnoremap QQ :q!<CR>
 
-" Saves the file (maybe)
-inoremap <C-Space> :w<CR>
-nnoremap <C-Space> :w<CR>
+inoremap jk <Esc>
+inoremap kj <Esc>
+
+vnoremap jk <Esc>
+vnoremap kj <Esc>
+"vnoremap <Space><Space> <Esc>
+"vnoremap <leader><leader> <Esc>
 
 let mapleader=" "
 nnoremap <leader>n :NERDTree<CR>
-nnoremap <leader>f :FZF<CR>
+"verical splt, swtich to previous vim window, use FZF to search for file
+nnoremap <leader>f :vsp<CR><C-w><C-p>:FZF<CR>
 
 " HTML MAPPINGS <Space> + tag
 nnoremap <leader>html :-1read $HOME/.vim/.skeleton/.htmlTag<CR>wf>a
@@ -82,7 +93,8 @@ inoremap \h4 <h4></h4><Esc>F<i
 inoremap \h5 <h5></h5><Esc>F<i
 inoremap \h6 <h6></h6><Esc>F<i
 
-inoremap ,e<leader> <% %><Esc>F%i
+inoremap ,e<leader> <% <Esc>F%a
+inoremap ,ee<leader> <% %><Esc>F%i
 inoremap ,q<leader> <%= %><Esc>F%i
 inoremap ,f<leader> %>
 "set omnifunc=htmlcomplete#CompleteTags
@@ -108,3 +120,10 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 "let g:UltiSnipsExpandTrigger="<cr>"
 "let g:UltiSnipsJumpForwardTrigger="<c-j>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+nnoremap <leader>\ :vsp<CR>
+nnoremap <leader>- :sp<CR>
+set winwidth=80
+set winminwidth=5
+nnoremap <silent> + :exe "resize" . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> - :exe "resize" . (winwidth(0) * 2/3)<CR>
