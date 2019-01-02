@@ -11,7 +11,9 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 "SURROUND COMMANDS => ysi", csi", ds'
+"csw' => change surround word ' so that word csw' will be 'word'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
 Plugin 'tpope/fugitive'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'scrooloose/nerdtree'
@@ -115,44 +117,29 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap j gj
 nnoremap k gk
 nnoremap <Space>w :w<CR>
-nnoremap Q :q<CR>
 nnoremap QQ :q!<CR>
+nnoremap XX :x<CR>
 
 " HTML
 " ================
-nnoremap <leader>html :-1read $HOME/.vim/.skeleton/.htmlTag<CR>wf>a
-nnoremap <leader>p :-1read $HOME/.vim/.skeleton/.pTag<CR>wf>a
-nnoremap <leader>div :-1read $HOME/.vim/.skeleton/.divTag<CR>wf>a
-nnoremap <leader>h1 :-1read $HOME/.vim/.skeleton/.h1Tag<CR>wf>a
-nnoremap <leader>h2 :-1read $HOME/.vim/.skeleton/.h2Tag<CR>wf>a
-nnoremap <leader>head :-1read $HOME/.vim/.skeleton/.includeHeaderTag<CR>wf%
-nnoremap <leader>foot :-1read $HOME/.vim/.skeleton/.includeFooterTag<CR>wf%
-nnoremap <leader>img :-1read $HOME/.vim/.skeleton/.imgTag<CR>f"a
-nnoremap <leader>ejs :-1read $HOME/.vim/.skeleton/.ejsTag<CR>f%a
+" nnoremap <leader>html :-1read $HOME/.vim/.skeleton/.htmlTag<CR>wf>a
+" nnoremap <leader>p :-1read $HOME/.vim/.skeleton/.pTag<CR>wf>a
+" nnoremap <leader>div :-1read $HOME/.vim/.skeleton/.divTag<CR>wf>a
+" nnoremap <leader>h1 :-1read $HOME/.vim/.skeleton/.h1Tag<CR>wf>a
+" nnoremap <leader>h2 :-1read $HOME/.vim/.skeleton/.h2Tag<CR>wf>a
+" nnoremap <leader>head :-1read $HOME/.vim/.skeleton/.includeHeaderTag<CR>wf%
+" nnoremap <leader>foot :-1read $HOME/.vim/.skeleton/.includeFooterTag<CR>wf%
+" nnoremap <leader>img :-1read $HOME/.vim/.skeleton/.imgTag<CR>f"a
+" " nnoremap <leader>ejs :-1read $HOME/.vim/.skeleton/.ejsTag<CR>f%a
 
 " ====================================================
 " INSERT MODE
 " ====================================================
-inoremap ,div<Space> <div class=""></div><Esc>F<i
-inoremap ,divej<Space> <div class=""></div><Esc>F<i
-inoremap ,label<Space> <label></label><Esc>F<i
-inoremap ,span<Space> <span></span><Esc>F<i
-inoremap ,form<Space> <form class="" action="" method=""></form><Esc>F<i
-inoremap ,input<Space> <input type="" name="" placeholder=""><Esc>3F=i
-inoremap ,p<Space> <p></p><Esc>F<i
-inoremap ,li<Space> <li></li><Esc>F<i
-inoremap ,h1<Space> <h1></h1><Esc>F<i
-inoremap ,h2<Space> <h2></h2><Esc>F<i
-inoremap ,h3<Space> <h3></h3><Esc>F<i
-inoremap ,h4<Space> <h4></h4><Esc>F<i
-inoremap ,h5<Space> <h5></h5><Esc>F<i
-inoremap ,h6<Space> <h6></h6><Esc>F<i
-
-inoremap jk <Esc>:w<CR>
-inoremap kj <Esc>:w<CR>
-inoremap ,(( ({})<Esc>F}i
-inoremap ,e<leader> <% <Esc>F%a
-inoremap ,ee<leader> <%= %><Esc>F%i
-inoremap ,f<leader> %>
+" inoremap jk <Esc>:w<CR>
+" inoremap kj <Esc>:w<CR>
+" inoremap ,(( ({})<Esc>F}i
+" inoremap ,e<leader> <% <Esc>F%a
+" inoremap ,ee<leader> <%= %><Esc>F%i
+" inoremap ,f<leader> %>
 
 au BufNewFile,BufRead *.ejs set filetype=html

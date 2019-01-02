@@ -1,0 +1,55 @@
+#set bash colors to normal
+set -g default-terminal "screen-256color"
+
+#Set prefix to Ctrl-Space
+unbind C-b
+set -g prefix C-Space
+bind Space send-prefix
+
+#Set Ctrl-Space to last window command
+bind C-Space last-window
+
+#Set pane splitting to | and -
+bind | split-window -h
+bind \ split-window -h
+bind - split-window -v
+bind _ split-window -v
+unbind '"'
+unbind %
+
+#Vi key mode
+set -gw mode-keys vi
+
+#Enable mouse mode for scrolling with mouse
+set -g mouse on
+
+#Set colors
+#select-pane pane -P 'bg=red'
+
+#Window mode bar
+setw -g mode-bg white
+setw -g mode-fg black
+
+#Set color of current window in status bar
+set-window-option -g window-status-current-bg yellow
+set-window-option -g window-status-current-fg black
+
+#set color of current pane 
+set -g window-style 'fg=colour247,bg=colour236'
+set -g window-active-style 'fg=colour250,bg=black'
+
+#Status bar
+set -g status-bg black
+set -g status-fg white
+set -g status-interval 10
+set -g status-left-length 50
+set -g status-left '#[fg=green][#I:#P #W] #(whoami)@#(hostname -s) ' 
+
+#Vim-like pane switching
+bind h select-pane -L
+bind l select-pane -R
+bind k select-pane -U
+bind j select-pane -D
+
+#Prevent windows from renaming themselves automatically
+set-option -g allow-rename off
